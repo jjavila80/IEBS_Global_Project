@@ -1,4 +1,7 @@
+
+
 services:
+# Servicio de la base de datos PostgreSQL
   db:
     image: postgres:15
     restart: always
@@ -13,6 +16,7 @@ services:
     networks:
       - app-network
 
+# Servicio de la API Node.js
   backend:
     build: ./api
     restart: always
@@ -20,17 +24,18 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
-      JWT_SECRET: your_jwt_secret
+      JWT_SECRET: your_jwt_secret # Usamos JWT_SECRET desde el archivo .env
       PORT: ${PORT} 
     ports:
       - "3000:3000"
     networks:
       - app-network
 
-
+# Volúmenes para persistencia de datos
 volumes:
   pgdata:
 
+# Redes para comunicación entre servicios
 networks:
   app-network:
     driver: bridge
