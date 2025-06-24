@@ -49,14 +49,14 @@ jobs:
         run: npm test
         working-directory: api
 
-      - name: Setup Java (for Ant and Sonar Scanner)
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '11'
-
-      - name: Run SonarQube analysis with Ant (build.xml)
+      - name: SonarQube Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ant -f .github/workflows/build.yml sonar
-
+        run: |
+          npm install -g sonar-scanner
+          sonar-scanner \
+            -Dsonar.projectKey=global-project-iebs_api \
+            -Dsonar.organization=global-project-iebs \
+            -Dsonar.sources=api \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN
