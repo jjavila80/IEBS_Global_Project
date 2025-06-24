@@ -58,5 +58,5 @@ jobs:
       - name: Run SonarQube analysis with Ant (build.xml)
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ant -f .github/workflows/build.xml sonar
+        run: ant -f .github/workflows/build.yml sonar
 
