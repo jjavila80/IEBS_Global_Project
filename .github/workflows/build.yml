@@ -47,5 +47,5 @@ jobs:
           DB_PASSWORD: postgres
           JWT_SECRET: supersecreto
         run: npm test
-        working-directory: ap
+        working-directory: api
 
