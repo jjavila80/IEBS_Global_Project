@@ -3,7 +3,7 @@
 Este proyecto proporciona una API RESTful para gestionar el registro, login y administración de usuarios. Está diseñada para ser utilizada por diferentes aplicaciones frontend que necesiten un sistema común de autenticación y gestión de usuarios. La API está construida con Node.js y Express, y utiliza una base de datos PostgreSQL para almacenar la información de los usuarios.
 
 
-## Estructura del Proyecto
+## Estructura del global Project
 
 auth-api/
 │
