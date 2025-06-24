@@ -1,14 +1,24 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
+const { Sequelize } = require('sequelize');
 
 const register = async (req, res) => {
-  const { email, password, nombre, apellido } = req.body;
+  const { email, password, nombre, apellido, rol } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ email, password: hashedPassword, nombre, apellido });
+    const user = await User.create({
+      email,
+      password: hashedPassword,
+      nombre,
+      apellido,
+      role: rol || 'user'
+    });
     res.status(201).json({ message: 'Usuario registrado', userId: user.id });
   } catch (error) {
+    if (error instanceof Sequelize.UniqueConstraintError) {
+      return res.status(409).json({ error: 'Email ya registrado' });
+    }
     res.status(500).json({ error: 'Error al registrar usuario' });
   }
 };
@@ -31,7 +41,9 @@ const login = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ['id', 'email', 'nombre', 'apellido'] });
+    const users = await User.findAll({
+      attributes: ['id', 'email', 'nombre', 'apellido', 'role']
+    });
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener usuarios' });
@@ -39,12 +51,21 @@ const getUsers = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const { email, password, nombre, apellido } = req.body;
+  const { email, password, nombre, apellido, rol } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({ email, password: hashedPassword, nombre, apellido });
+    await User.create({
+      email,
+      password: hashedPassword,
+      nombre,
+      apellido,
+      role: rol || 'user'
+    });
     res.status(201).json({ message: 'Usuario creado por administrador' });
   } catch (error) {
+    if (error instanceof Sequelize.UniqueConstraintError) {
+      return res.status(409).json({ error: 'Email ya registrado' });
+    }
     res.status(500).json({ error: 'Error al crear usuario' });
   }
 };
