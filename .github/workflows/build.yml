@@ -55,8 +55,8 @@ jobs:
         run: |
           npm install -g sonar-scanner
           sonar-scanner \
-            -Dsonar.projectKey=global-project-iebs_api \
-            -Dsonar.organization=global-project-iebs \
+            -Dsonar.projectKey=global-project-iebs \
+            -Dsonar.organization=Global Project IEBS \
             -Dsonar.sources=api \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
