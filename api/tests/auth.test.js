@@ -112,5 +112,11 @@ describe('🧪 Pruebas de Autenticación y Seguridad de la API', () => {
 
     expect(res.statusCode).toBe(201);
   });
+
+  // Cierra la conexión a la base de datos para que Jest termine
+  afterAll(async () => {
+    await sequelize.close();
+  });
 });
+
 
