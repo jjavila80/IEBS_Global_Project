@@ -38,7 +38,7 @@ jobs:
         run: npm install
         working-directory: api
 
-      - name: Run tests
+      - name: Run tests with coverage
         env:
           DB_HOST: localhost
           DB_PORT: 5432
@@ -46,6 +46,12 @@ jobs:
           DB_USER: postgres
           DB_PASSWORD: postgres
           JWT_SECRET: supersecreto
-        run: npm test
+        run: npm run test:ci
         working-directory: api
 
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
