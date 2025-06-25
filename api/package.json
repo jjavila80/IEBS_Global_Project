@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "NODE_ENV=test jest --runInBand"
+    "test": "NODE_ENV=test jest --runInBand",
+    "test:ci": "NODE_ENV=test jest --runInBand --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
