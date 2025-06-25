@@ -4,6 +4,7 @@ Este proyecto proporciona una API RESTful para gestionar el registro, login y ad
 
 
 ## Estructura del global Project IEBS
+-------------------------------------
 
 auth-api/
 │
