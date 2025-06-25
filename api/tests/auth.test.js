@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
-const { User } = require('../models');  // Ajusta la ruta si es distinta
+const { User, sequelize } = require('../models');  // Ajusta la ruta si es distinta
 const bcrypt = require('bcrypt');
 
 describe('🧪 Pruebas de Autenticación y Seguridad de la API', () => {
