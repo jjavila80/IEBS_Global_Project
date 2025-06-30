@@ -17,6 +17,7 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
+
 // Middleware de validación para registro y creación de usuario
 const validateUser = [
   body('email').isEmail().withMessage('Email inválido'),

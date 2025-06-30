@@ -1,6 +1,8 @@
 #!/bin/bash
 
-API_URL="http://192.168.49.2:30531/api"
+API_URL="http://a598448f1bc6f49768708b38480df0a0-2132678312.eu-south-2.elb.amazonaws.com:3000/api"
+
+#API_URL="http://192.168.49.2:31283/api"
 
 echo "🔧 Pruebas de validación de entrada para registro, login y creación de usuario..."
 

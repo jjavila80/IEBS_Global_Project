@@ -1,8 +1,6 @@
 #!/bin/bash
 
-API_URL="http://a598448f1bc6f49768708b38480df0a0-2132678312.eu-south-2.elb.amazonaws.com:3000/api"
-
-#API_URL="http://192.168.49.2:31000/api"
+API_URL="ad2601478a549477db833503480ae189-2029441709.eu-south-2.elb.amazonaws.com:3000/api/"
 
 echo "🔧 Registrando usuario normal..."
 REGISTER_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$API_URL/register" \
@@ -50,6 +48,8 @@ STATUS_USERS=$(curl -s -o /dev/null -w "%{http_code}" -X GET "$API_URL/admin/use
 
 if [ "$STATUS_USERS" -eq 200 ]; then
   echo "✅ Acceso a usuarios OK (200)"
+  curl -s -X GET "$API_URL/admin/users" \
+    -H "Authorization: Bearer $ADMIN_TOKEN" | jq
 else
   echo "❌ Acceso a usuarios fallido ($STATUS_USERS)"
 fi
