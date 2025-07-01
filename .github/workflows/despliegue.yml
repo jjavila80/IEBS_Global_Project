@@ -12,9 +12,10 @@ jobs:
       EKS_CLUSTER_NAME: iebs-cluster
       AWS_REGION: eu-south-2
       IMAGE_NAME: jjavila80/api-nodejs
-      DEPLOYMENT_NAME: auth-api-deployment
+      DEPLOYMENT_NAME: auth-api
       CONTAINER_NAME: auth-api
       K8S_NAMESPACE: default
+      
 
     steps:
     - name: Checkout repo
