@@ -235,5 +235,5 @@ api/coverage/lcov-report/index.html
 
 👨🎓 Autor: Proyecto desarrollado por @jjavila80 para IEBS Business School como parte del programa de formación.
 
-📝 Licencia: MIT © jjavila80
+📝 Licencia: MIT © jjavila80 
 
