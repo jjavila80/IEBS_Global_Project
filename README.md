@@ -67,38 +67,6 @@ Este proyecto proporciona una API RESTful de autenticación centralizada que per
 - **npm** o **yarn** para la gestión de dependencias
 
 
-## Instalación
-
-1. Clona este repositorio:
-
-   git clone https://github.com/tuusuario/auth-api.git
-
-2. Entra en el directorio del proyecto:
-   cd auth-api
-
-3. Instala las dependencias:
-   npm install
-
-4. Crea un archivo .env con las variables de entorno necesarias (ejemplo más abajo):
-
-   PORT=3000
-   DB_HOST=db
-   DB_PORT=5432
-   DB_NAME=authdb
-   DB_USER=postgres
-   DB_PASSWORD=yourpassword
-   JWT_SECRET=secretkey123
-
-5. Inicia la base de datos PostgreSQL si aún no está corriendo.
-
-6. Ejecuta la aplicación en desarrollo:
-   npm run dev
-
-Esto levantará un servidor en http://localhost:3000.
-
-
-
-
 
 ## 🚀 Endpoints REST
 
@@ -133,7 +101,7 @@ Esto levantará un servidor en http://localhost:3000.
 ### Dockerfile
 
 ```dockerfile
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -188,7 +156,6 @@ volumes:
 
 - ebs-sc.yaml: StorageClass para EBS
 
-- ingress.yaml: (opcional)
 
 ---
 
